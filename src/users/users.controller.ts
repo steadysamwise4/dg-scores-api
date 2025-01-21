@@ -1,44 +1,30 @@
 import {
   Body,
   Controller,
-  Post,
   Get,
   Patch,
   Param,
   Delete,
   NotFoundException,
-  BadRequestException,
+  UseGuards,
+  // Request,
 } from '@nestjs/common';
-import { CreateUserDto } from './dtos/create-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
 import { UsersService } from './users.service';
 import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { UserDto } from './dtos/user.dto';
-import { AuthService } from './auth.service';
+import { AuthGuard } from 'src/auth/auth.guard';
 
-@Controller('auth')
+@UseGuards(AuthGuard)
+@Controller('users')
 @Serialize(UserDto)
 export class UsersController {
-  constructor(
-    private usersService: UsersService,
-    private authService: AuthService,
-  ) {}
-
-  @Post('/signup')
-  createUser(@Body() body: CreateUserDto) {
-    return this.authService.signup(body.email, body.password, body.username);
-  }
-
-  @Post('/signin')
-  signin(@Body() body: Partial<CreateUserDto>) {
-    if (!body.email || !body.password) {
-      throw new BadRequestException('email and password required');
-    }
-    return this.authService.signin(body.email, body.password);
-  }
+  constructor(private usersService: UsersService) {}
 
   @Get('/all')
   findAllUsers() {
+    // const user = req.user;
+    // console.log('user:', user);
     return this.usersService.findAll();
   }
 

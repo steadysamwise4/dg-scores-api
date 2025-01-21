@@ -9,6 +9,7 @@ import { CoursesModule } from './courses/courses.module';
 import { User } from './users/user.entity';
 import { Round } from './rounds/round.entity';
 import { Course } from './courses/course.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { Course } from './courses/course.entity';
     UsersModule,
     RoundsModule,
     CoursesModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
