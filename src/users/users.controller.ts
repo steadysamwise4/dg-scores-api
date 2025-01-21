@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   NotFoundException,
+  BadRequestException,
 } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
@@ -25,7 +26,15 @@ export class UsersController {
 
   @Post('/signup')
   createUser(@Body() body: CreateUserDto) {
-    this.authService.signup(body.email, body.password, body.username);
+    return this.authService.signup(body.email, body.password, body.username);
+  }
+
+  @Post('/signin')
+  signin(@Body() body: Partial<CreateUserDto>) {
+    if (!body.email || !body.password) {
+      throw new BadRequestException('email and password required');
+    }
+    return this.authService.signin(body.email, body.password);
   }
 
   @Get('/all')
