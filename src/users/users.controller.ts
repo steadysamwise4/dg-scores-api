@@ -23,8 +23,6 @@ export class UsersController {
 
   @Get('/all')
   findAllUsers() {
-    // const user = req.user;
-    // console.log('user:', user);
     return this.usersService.findAll();
   }
 

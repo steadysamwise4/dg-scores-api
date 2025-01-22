@@ -6,13 +6,13 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-enum LengthOption {
+export enum LengthOption {
   SHORT = 'short',
   AVERAGE = 'average',
   LONG = 'long',
 }
 
-enum DifficultyOption {
+export enum DifficultyOption {
   EASY = 'easy',
   AVERAGE = 'average',
   HARD = 'hard',
@@ -37,6 +37,12 @@ export class Course {
     enum: DifficultyOption,
   })
   difficulty: DifficultyOption;
+
+  @Column({ type: 'float' })
+  lng: number;
+
+  @Column({ type: 'float' })
+  lat: number;
 
   @CreateDateColumn({ type: 'timestamptz' })
   createdAt: Date;
