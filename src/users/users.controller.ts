@@ -14,6 +14,7 @@ import { UsersService } from './users.service';
 import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { UserDto } from './dtos/user.dto';
 import { AuthGuard } from 'src/auth/auth.guard';
+import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
 
 @UseGuards(AuthGuard)
 @Controller('users')
@@ -22,7 +23,8 @@ export class UsersController {
   constructor(private usersService: UsersService) {}
 
   @Get('/all')
-  findAllUsers() {
+  findAllUsers(@CurrentUser() user: object) {
+    console.log(user);
     return this.usersService.findAll();
   }
 

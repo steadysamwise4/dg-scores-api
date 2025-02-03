@@ -1,3 +1,4 @@
+import { Round } from 'src/rounds/round.entity';
 import {
   AfterInsert,
   AfterRemove,
@@ -7,6 +8,7 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
 // import { Round } from 'src/rounds/round.entity';
 
@@ -30,7 +32,8 @@ export class User {
   @UpdateDateColumn({ type: 'timestamptz' })
   updatedAt: Date;
 
-  // rounds: Round[];
+  @OneToMany(() => Round, (round) => round.user)
+  rounds: Round[];
 
   // @Column()
   // handicap: number;
