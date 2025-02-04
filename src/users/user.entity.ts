@@ -1,3 +1,4 @@
+import { Course } from 'src/courses/course.entity';
 import { Round } from 'src/rounds/round.entity';
 import {
   AfterInsert,
@@ -34,6 +35,9 @@ export class User {
 
   @OneToMany(() => Round, (round) => round.user)
   rounds: Round[];
+
+  @OneToMany(() => Course, (course) => course.user)
+  favoriteCourses: Course[];
 
   // @Column()
   // handicap: number;

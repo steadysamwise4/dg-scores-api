@@ -1,3 +1,4 @@
+import { Course } from 'src/courses/course.entity';
 import { User } from 'src/users/user.entity';
 import {
   Entity,
@@ -33,4 +34,7 @@ export class Round {
 
   @ManyToOne(() => User, (user) => user.rounds)
   user: User;
+
+  @ManyToOne(() => Course, (course) => course.rounds)
+  course: Course;
 }

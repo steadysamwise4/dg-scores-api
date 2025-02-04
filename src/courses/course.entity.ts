@@ -1,9 +1,13 @@
+import { Round } from 'src/rounds/round.entity';
+import { User } from 'src/users/user.entity';
 import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
+  ManyToOne,
 } from 'typeorm';
 
 export enum LengthOption {
@@ -49,4 +53,10 @@ export class Course {
 
   @UpdateDateColumn({ type: 'timestamptz' })
   updatedAt: Date;
+
+  @OneToMany(() => Round, (round) => round.course)
+  rounds: Round[];
+
+  @ManyToOne(() => User, (user) => user.favoriteCourses)
+  user: User;
 }
