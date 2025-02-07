@@ -14,16 +14,16 @@ export class Round {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column('int', { array: true })
+  @Column('int', { array: true, default: [] })
   holeScores: number[];
 
-  @Column()
+  @Column('int', { default: 0 })
   total: number;
 
-  @Column()
+  @Column('boolean', { default: false })
   isNine: boolean;
 
-  @Column()
+  @Column('boolean', { default: false })
   isComplete: boolean;
 
   @CreateDateColumn({ type: 'timestamptz' })

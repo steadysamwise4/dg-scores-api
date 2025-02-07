@@ -14,4 +14,8 @@ export class CoursesService {
     course.user = user;
     return this.repo.save(course);
   }
+
+  find(courseId: number) {
+    return this.repo.findOne({ where: { id: courseId } });
+  }
 }
