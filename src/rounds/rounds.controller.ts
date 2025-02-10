@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Param,
   Patch,
   Post,
@@ -15,19 +16,18 @@ import { CreateRoundDto } from './dtos/create-round-dto';
 import { RoundDto } from './dtos/round.dto';
 import { UpdateRoundDto } from './dtos/update-round-dto';
 
+@UseGuards(AuthGuard)
 @Controller('rounds')
 export class RoundsController {
   constructor(private roundsService: RoundsService) {}
 
   @Post()
-  @UseGuards(AuthGuard)
   @Serialize(RoundDto)
   createRound(@Body() body: CreateRoundDto, @CurrentUser() user: User) {
     return this.roundsService.create(body, user);
   }
 
   @Patch('/:id')
-  @UseGuards(AuthGuard)
   @Serialize(RoundDto)
   updateRound(
     @Param('id') id: string,
@@ -36,5 +36,10 @@ export class RoundsController {
   ) {
     const userId = parseInt(id);
     return this.roundsService.update(userId, body, user);
+  }
+
+  @Delete('/:id')
+  removeRound(@Param('id') id: string, @CurrentUser() user: User) {
+    return this.roundsService.remove(parseInt(id), user);
   }
 }
