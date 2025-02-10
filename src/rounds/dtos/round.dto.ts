@@ -5,6 +5,9 @@ export class RoundDto {
   id: number;
 
   @Expose()
+  date: Date;
+
+  @Expose()
   holeScores: number[];
 
   @Expose()

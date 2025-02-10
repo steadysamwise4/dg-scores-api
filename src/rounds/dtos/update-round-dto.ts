@@ -6,20 +6,22 @@ import {
   IsOptional,
 } from 'class-validator';
 
-export class CreateRoundDto {
+export class UpdateRoundDto {
+  @IsOptional()
   @IsNumber()
   courseId: number;
 
+  @IsOptional()
   @IsDateString()
   date: Date;
 
   @IsOptional()
-  @IsArray()
-  holeScores: number[];
-
-  @IsOptional()
   @IsNumber()
   total: number;
+
+  @IsOptional()
+  @IsArray()
+  holeScores: number[];
 
   @IsOptional()
   @IsBoolean()

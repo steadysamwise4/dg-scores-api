@@ -14,6 +14,9 @@ export class Round {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ type: 'timestamptz' })
+  date: Date;
+
   @Column('int', { array: true, default: [] })
   holeScores: number[];
 
