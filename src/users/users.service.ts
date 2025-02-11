@@ -25,6 +25,10 @@ export class UsersService {
     return this.repo.find();
   }
 
+  save(user: User) {
+    return this.repo.save(user);
+  }
+
   async findCurrentUserWithData(user: User) {
     const userWithData = await this.repo.findOne({
       where: { id: user.id },

@@ -28,7 +28,7 @@ export class User {
   @Column()
   username: string;
 
-  @Column('int', { default: undefined })
+  @Column('int', { nullable: true })
   handicap: number;
 
   @CreateDateColumn({ type: 'timestamptz' })
