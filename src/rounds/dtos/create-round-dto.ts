@@ -21,6 +21,9 @@ export class CreateRoundDto {
   @IsNumber()
   total: number;
 
+  @IsBoolean()
+  isHome: boolean;
+
   @IsOptional()
   @IsBoolean()
   isNine: boolean;

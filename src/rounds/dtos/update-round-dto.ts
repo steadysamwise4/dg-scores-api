@@ -25,6 +25,10 @@ export class UpdateRoundDto {
 
   @IsOptional()
   @IsBoolean()
+  isHome: boolean;
+
+  @IsOptional()
+  @IsBoolean()
   isNine: boolean;
 
   @IsOptional()

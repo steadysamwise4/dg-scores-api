@@ -14,6 +14,9 @@ export class RoundDto {
   total: number;
 
   @Expose()
+  isHome: boolean;
+
+  @Expose()
   isNine: boolean;
 
   @Expose()

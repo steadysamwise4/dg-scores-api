@@ -43,6 +43,9 @@ class NestedRoundDto {
   total: number;
 
   @Expose()
+  isHome: boolean;
+
+  @Expose()
   isNine: boolean;
 
   @Expose()
@@ -69,6 +72,9 @@ export class UserDto {
 
   @Expose()
   username: string;
+
+  @Expose()
+  handicap: number;
 
   @Expose()
   createdAt: Date;

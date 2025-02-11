@@ -23,6 +23,12 @@ export class Round {
   @Column('int', { default: 0 })
   total: number;
 
+  @Column('int', { default: 0 })
+  adjustedTotal: number;
+
+  @Column('boolean')
+  isHome: boolean;
+
   @Column('boolean', { default: false })
   isNine: boolean;
 

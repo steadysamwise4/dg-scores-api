@@ -9,12 +9,14 @@ import { Round } from './round.entity';
 import { Repository } from 'typeorm';
 import { CreateRoundDto } from './dtos/create-round-dto';
 import { User } from 'src/users/user.entity';
+import { UsersService } from 'src/users/users.service';
 
 @Injectable()
 export class RoundsService {
   constructor(
     @InjectRepository(Round) private repo: Repository<Round>,
     private coursesService: CoursesService,
+    private usersService: UsersService,
   ) {}
 
   findOne(id: number) {

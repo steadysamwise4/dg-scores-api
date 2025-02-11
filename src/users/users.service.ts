@@ -34,6 +34,7 @@ export class UsersService {
     if (!userWithData) {
       throw new NotFoundException('user not found');
     }
+
     return userWithData;
   }
 
