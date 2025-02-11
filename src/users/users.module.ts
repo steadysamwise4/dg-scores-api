@@ -5,9 +5,10 @@ import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
 import { User } from './user.entity';
 import { CurrentUserInterceptor } from 'src/auth/interceptors/current-user-interceptor';
+import { CoursesModule } from 'src/courses/courses.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User])],
+  imports: [TypeOrmModule.forFeature([User]), CoursesModule],
   controllers: [UsersController],
   providers: [
     UsersService,

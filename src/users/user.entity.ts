@@ -10,8 +10,9 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToMany,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm';
-// import { Round } from 'src/rounds/round.entity';
 
 @Entity()
 export class User {
@@ -37,6 +38,10 @@ export class User {
   rounds: Round[];
 
   @OneToMany(() => Course, (course) => course.user)
+  courses: Course[];
+
+  @ManyToMany(() => Course, (course) => course.favoritedBy)
+  @JoinTable({ name: 'user-favorited-courses' })
   favoriteCourses: Course[];
 
   // @Column()

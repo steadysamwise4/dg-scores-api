@@ -7,6 +7,7 @@ import {
   Delete,
   NotFoundException,
   UseGuards,
+  Post,
   // Request,
 } from '@nestjs/common';
 import { UpdateUserDto } from './dtos/update-user.dto';
@@ -15,6 +16,7 @@ import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { UserDto } from './dtos/user.dto';
 import { AuthGuard } from 'src/auth/auth.guard';
 import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
+import { User } from './user.entity';
 
 @UseGuards(AuthGuard)
 @Controller('users')
@@ -23,9 +25,15 @@ export class UsersController {
   constructor(private usersService: UsersService) {}
 
   @Get('/all')
-  findAllUsers(@CurrentUser() user: object) {
+  findAllUsers(@CurrentUser() user: User) {
     console.log(user);
     return this.usersService.findAll();
+  }
+
+  @Get('/current')
+  findCurrentUser(@CurrentUser() user: User) {
+    console.log(user);
+    return this.usersService.findCurrentUserWithData(user);
   }
 
   @Get('/:id')
@@ -45,5 +53,10 @@ export class UsersController {
   @Patch('/:id')
   updateUser(@Param('id') id: string, @Body() body: UpdateUserDto) {
     return this.usersService.update(parseInt(id), body);
+  }
+
+  @Post('/:courseId')
+  addFavorite(@Param('courseId') id: string, @CurrentUser() user: User) {
+    return this.usersService.addFavorite(parseInt(id), user);
   }
 }

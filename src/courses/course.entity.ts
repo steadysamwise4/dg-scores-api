@@ -8,6 +8,7 @@ import {
   UpdateDateColumn,
   OneToMany,
   ManyToOne,
+  ManyToMany,
 } from 'typeorm';
 
 export enum LengthOption {
@@ -57,6 +58,9 @@ export class Course {
   @OneToMany(() => Round, (round) => round.course)
   rounds: Round[];
 
-  @ManyToOne(() => User, (user) => user.favoriteCourses)
+  @ManyToOne(() => User, (user) => user.courses)
   user: User;
+
+  @ManyToMany(() => User, (user) => user.favoriteCourses)
+  favoritedBy: User[];
 }
