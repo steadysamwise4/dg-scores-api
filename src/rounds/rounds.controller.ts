@@ -7,10 +7,10 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
-import { AuthGuard } from 'src/auth/auth.guard';
-import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
-import { Serialize } from 'src/interceptors/serialize.interceptor';
-import { User } from 'src/users/user.entity';
+import { AuthGuard } from '../auth/auth.guard';
+import { CurrentUser } from '../auth/decorators/current-user.decorator';
+import { Serialize } from '../interceptors/serialize.interceptor';
+import { User } from '../users/user.entity';
 import { RoundsService } from './rounds.service';
 import { CreateRoundDto } from './dtos/create-round-dto';
 import { RoundDto } from './dtos/round.dto';

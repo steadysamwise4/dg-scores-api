@@ -1,5 +1,5 @@
-import { Course } from 'src/courses/course.entity';
-import { Round } from 'src/rounds/round.entity';
+import { Course } from '../courses/course.entity';
+import { Round } from '../rounds/round.entity';
 import {
   AfterInsert,
   AfterRemove,

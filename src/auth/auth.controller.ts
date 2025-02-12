@@ -1,8 +1,8 @@
 import { BadRequestException, Body, Controller, Post } from '@nestjs/common';
-import { CreateUserDto } from 'src/users/dtos/create-user.dto';
+import { CreateUserDto } from '../users/dtos/create-user.dto';
 import { AuthService } from './auth.service';
-import { Serialize } from 'src/interceptors/serialize.interceptor';
-import { UserDto } from 'src/users/dtos/user.dto';
+import { Serialize } from '../interceptors/serialize.interceptor';
+import { UserDto } from '../users/dtos/user.dto';
 
 @Controller('auth')
 export class AuthController {

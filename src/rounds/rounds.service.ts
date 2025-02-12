@@ -5,13 +5,13 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CoursesService } from 'src/courses/courses.service';
+import { CoursesService } from '../courses/courses.service';
 import { Round } from './round.entity';
 import { Repository } from 'typeorm';
 import { CreateRoundDto } from './dtos/create-round-dto';
-import { User } from 'src/users/user.entity';
-import { UsersService } from 'src/users/users.service';
-import { DifficultyOption, LengthOption } from 'src/courses/course.entity';
+import { User } from '../users/user.entity';
+import { UsersService } from '../users/users.service';
+import { LengthOption, DifficultyOption } from '../courses/course.entity';
 
 @Injectable()
 export class RoundsService {

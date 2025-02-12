@@ -1,5 +1,5 @@
-import { Round } from 'src/rounds/round.entity';
-import { User } from 'src/users/user.entity';
+import { Round } from '../rounds/round.entity';
+import { User } from '../users/user.entity';
 import {
   Entity,
   Column,

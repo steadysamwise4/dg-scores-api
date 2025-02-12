@@ -1,7 +1,7 @@
 import { Expose, Type } from 'class-transformer';
 import { ValidateNested } from 'class-validator';
-import { DifficultyOption, LengthOption } from 'src/courses/course.entity';
-import { CourseDto } from 'src/courses/dtos/course.dto';
+import { LengthOption, DifficultyOption } from '../../courses/course.entity';
+import { CourseDto } from '../../courses/dtos/course.dto';
 
 class NestedCourseDto {
   @Expose()
