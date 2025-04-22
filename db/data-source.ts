@@ -13,7 +13,7 @@ export const dataSourceOptions: DataSourceOptions = {
   extra: {
     ssl: isProduction ? { rejectUnauthorized: false } : null,
   },
-  type: 'postgres' as const,
+  type: 'postgres',
   host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT),
   password: process.env.DB_PASSWORD,
@@ -23,6 +23,7 @@ export const dataSourceOptions: DataSourceOptions = {
   migrations: ['dist/db/migrations/*.js'],
   migrationsRun: true,
   logging: true,
+  synchronize: false,
 };
 
 const dataSource = new DataSource(dataSourceOptions);
