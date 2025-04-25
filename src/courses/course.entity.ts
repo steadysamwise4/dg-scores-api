@@ -35,13 +35,13 @@ export class Course {
     type: 'enum',
     enum: LengthOption,
   })
-  length: LengthOption;
+  length: string;
 
   @Column({
     type: 'enum',
     enum: DifficultyOption,
   })
-  difficulty: DifficultyOption;
+  difficulty: string;
 
   @Column({ type: 'float' })
   lng: number;
